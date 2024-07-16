@@ -52,7 +52,7 @@ CourseSchema.statics.getAverageCost = async function (bootcampId) {
     },
   ]);
 
-  console.log(obj);
+  // console.log(obj);
 
   try {
     await this.model('Bootcamp').findByIdAndUpdate(bootcampId, {
