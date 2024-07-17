@@ -9,6 +9,7 @@ const colors = require('colors');
 const fileupload = require('express-fileupload');
 const errorHandler = require('./middleware/error');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 dotenv.config({ path: './config/.env' });
 
@@ -17,6 +18,8 @@ connectDB();
 const app = express();
 
 app.use(express.json());
+
+app.use(cookieParser());
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
