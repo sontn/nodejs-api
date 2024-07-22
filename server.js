@@ -13,6 +13,8 @@ const errorHandler = require('./middleware/error');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require('helmet');
+const xss = require('xss-clean');
 
 dotenv.config({ path: './config/.env' });
 
@@ -33,6 +35,12 @@ app.use(fileupload());
 
 // Sanitize data
 app.use(mongoSanitize());
+
+// set security headers
+app.use(helmet());
+
+// Prevent XSS attacks
+app.use(xss());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
