@@ -22,4 +22,6 @@ router.route('/').get(
   getReviews
 );
 
+router.route('/:id').get(getReview);
+
 module.exports = router;
